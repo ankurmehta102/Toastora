@@ -1,39 +1,70 @@
 :root {
-  /* =========================
-     Success
-     ========================= */
-  --toast-success-background: #e8f5bd;
-  --toast-success-border: #5b806f;
+  /* Success */
+  --toast-success-bg: #f0fdf4;
+  --toast-success-text: #166534;
+  --toast-success-accent: #22c55e;
 
-  /* =========================
-     Danger
-     ========================= */
-  --toast-danger-background: #ffa07a;
-  --toast-danger-border: #dc143c;
+  /* Error */
+  --toast-error-bg: #fef2f2;
+  --toast-error-text: #991b1b;
+  --toast-error-accent: #ef4444;
+
+  /* Info */
+  --toast-info-bg: #eff6ff;
+  --toast-info-text: #1e40af;
+  --toast-info-accent: #3b82f6;
+
+  /* Warning */
+  --toast-warning-bg: #fffbeb;
+  --toast-warning-text: #92400e;
+  --toast-warning-accent: #f59e0b;
 }
 
 .toast {
+  display: flex;
+  justify-content: center;
+
   width: 350px;
   box-sizing: border-box;
   position: relative;
-  padding: 10px;
+  padding: 12px 13px;
   border: 2px solid;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 .toast[data-type="success"] {
-  background-color: var(--toast-success-background);
-  border-color: var(--toast-success-border);
-  color: var(--toast-success-border);
+  background-color: var(--toast-success-bg);
+  border-color: var(--toast-success-text);
+  color: var(--toast-success-text);
 }
-.toast[data-type="danger"] {
-  background-color: var(--toast-danger-background);
-  border-color: var(--toast-danger-border);
-  color: var(--toast-danger-border);
+.toast[data-type="error"] {
+  background-color: var(--toast-error-bg);
+  border-color: var(--toast-error-text);
+  color: var(--toast-error-text);
+}
+.toast[data-type="info"] {
+  background-color: var(--toast-info-bg);
+  border-color: var(--toast-info-text);
+  color: var(--toast-info-text);
+}
+.toast[data-type="warning"] {
+  background-color: var(--toast-warning-bg);
+  border-color: var(--toast-warning-text);
+  color: var(--toast-warning-text);
+}
+
+.toast-content {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .toast-title {
-  margin: 0;
+  font-size: medium;
+  font-weight: bold;
+}
 
-  font-size: large;
-  font-weight: 700;
+.toast-desc {
+  font-size: small;
+  font-weight: 400;
 }

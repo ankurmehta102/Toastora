@@ -1,12 +1,16 @@
 import "../styles/Toast.css";
-import { ToastProps } from "../toasts/types";
+import type { Toast } from "../toasts/types";
 import CancelButton from "./CancelButton";
 
-function Toast({ id, title, type }: ToastProps) {
+function Toast({ id, title, type, desc }: Toast) {
   return (
     <div data-type={type} className="toast">
-      <span className="toast-title">{title}</span>
-      <CancelButton />
+      <div className="toast-content">
+        <span className="toast-title">{title}</span>
+        <span className="toast-desc">{desc}</span>
+      </div>
+
+      <CancelButton id={id} />
     </div>
   );
 }
