@@ -1,0 +1,39 @@
+:root {
+  /* =========================
+     Success
+     ========================= */
+  --toast-success-background: #e8f5bd;
+  --toast-success-border: #5b806f;
+
+  /* =========================
+     Danger
+     ========================= */
+  --toast-danger-background: #ffa07a;
+  --toast-danger-border: #dc143c;
+}
+
+.toast {
+  width: 350px;
+  box-sizing: border-box;
+  position: relative;
+  padding: 10px;
+  border: 2px solid;
+  border-radius: 5px;
+}
+.toast[data-type="success"] {
+  background-color: var(--toast-success-background);
+  border-color: var(--toast-success-border);
+  color: var(--toast-success-border);
+}
+.toast[data-type="danger"] {
+  background-color: var(--toast-danger-background);
+  border-color: var(--toast-danger-border);
+  color: var(--toast-danger-border);
+}
+
+.toast-title {
+  margin: 0;
+
+  font-size: large;
+  font-weight: 700;
+}

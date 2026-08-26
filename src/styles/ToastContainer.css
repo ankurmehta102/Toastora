@@ -1,0 +1,9 @@
+.toasts-container {
+  width: 360px;
+  top: 10px;
+  right: 10px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

@@ -1,9 +1,10 @@
 import "./App.css";
+import ToastContainer from "../../src/components/ToastContainer";
 
 function App() {
   return (
     <>
-      <h1>Hello world!</h1>
+      <ToastContainer></ToastContainer>
     </>
   );
 }
