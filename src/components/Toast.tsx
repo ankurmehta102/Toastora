@@ -16,14 +16,14 @@ const icons = {
 };
 
 function Toast({ id, title, type, desc, state, duration }: Toast) {
-  duration &&
-    useEffect(() => {
-      const timer = setTimeout(() => {
-        toast.updateState(id, ToastStates.Exiting);
-      }, duration);
+  useEffect(() => {
+    if (duration === undefined) return;
+    const timer = setTimeout(() => {
+      toast.updateState(id, ToastStates.Exiting);
+    }, duration);
 
-      return () => clearTimeout(timer);
-    }, [id, duration]);
+    return () => clearTimeout(timer);
+  }, [id, duration]);
   return (
     <div
       data-type={type}
@@ -40,7 +40,7 @@ function Toast({ id, title, type, desc, state, duration }: Toast) {
       <div className="toast-cancel-button-container">
         <CancelButton id={id} />
       </div>
-      {duration && (
+      {duration !== undefined && (
         <div
           data-type={type}
           className="toast-progress"
