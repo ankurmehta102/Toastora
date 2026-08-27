@@ -6,6 +6,7 @@ import "../styles/Toast.css";
 import { ToastStates, type Toast } from "../toasts/types";
 import CancelButton from "./CancelButton";
 import toast from "../toasts/ToastManager";
+import { useEffect } from "react";
 
 const icons = {
   success: <SuccessIcon />,
@@ -14,7 +15,15 @@ const icons = {
   warning: <WarningIcon />,
 };
 
-function Toast({ id, title, type, desc, state }: Toast) {
+function Toast({ id, title, type, desc, state, duration }: Toast) {
+  duration &&
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        toast.updateState(id, ToastStates.Exiting);
+      }, duration);
+
+      return () => clearTimeout(timer);
+    }, [id, duration]);
   return (
     <div
       data-type={type}
@@ -31,6 +40,13 @@ function Toast({ id, title, type, desc, state }: Toast) {
       <div className="toast-cancel-button-container">
         <CancelButton id={id} />
       </div>
+      {duration && (
+        <div
+          data-type={type}
+          className="toast-progress"
+          style={{ animationDuration: `${duration}ms` }}
+        />
+      )}
     </div>
   );
 }

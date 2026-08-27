@@ -19,8 +19,9 @@ function ToastContainer() {
             id={toast.id}
             type={toast.type}
             title={toast.title}
-            desc={toast.desc}
+            desc={toast?.desc}
             state={toast.state}
+            duration={toast?.duration}
           />
         ))}
     </div>

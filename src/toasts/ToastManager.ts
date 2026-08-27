@@ -1,4 +1,4 @@
-import { ToastStates, ToastTypes, type Toast } from "./types";
+import { ToastOptions, ToastStates, ToastTypes, type Toast } from "./types";
 
 class ToastManager {
   private toasts: Toast[] = [];
@@ -30,47 +30,46 @@ class ToastManager {
 
   remove(id: number) {
     this.toasts = this.toasts.filter((toast) => toast.id !== id);
-
     this.notify();
   }
 
-  success(title: string, desc?: string) {
+  success(title: string, options?: ToastOptions) {
     this.add({
       id: this.generateToastId(),
       title,
       type: ToastTypes.Success,
       state: ToastStates.Visible,
-      desc,
+      ...options,
     });
   }
 
-  error(title: string, desc?: string) {
+  error(title: string, options?: ToastOptions) {
     this.add({
       id: this.generateToastId(),
       title,
       type: ToastTypes.Error,
       state: ToastStates.Visible,
-      desc,
+      ...options,
     });
   }
 
-  info(title: string, desc?: string) {
+  info(title: string, options?: ToastOptions) {
     this.add({
       id: this.generateToastId(),
       title,
       type: ToastTypes.Info,
       state: ToastStates.Visible,
-      desc,
+      ...options,
     });
   }
 
-  warning(title: string, desc?: string) {
+  warning(title: string, options?: ToastOptions) {
     this.add({
       id: this.generateToastId(),
       title,
       type: ToastTypes.Warning,
       state: ToastStates.Visible,
-      desc,
+      ...options,
     });
   }
 }

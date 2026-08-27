@@ -16,6 +16,8 @@ export type Toast = {
   title: string;
   state: ToastStates;
   desc?: string;
+  duration?: number;
 };
 
 export type CancelButtonProps = Pick<Toast, "id">;
+export type ToastOptions = Pick<Toast, "desc" | "duration">;
