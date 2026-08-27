@@ -6,6 +6,13 @@ class ToastManager {
 
   subscribe(listener: (toasts: Toast[]) => void) {
     this.listener = listener;
+    listener(this.toasts);
+
+    return () => {
+      if (this.listener === listener) {
+        this.listener = null;
+      }
+    };
   }
 
   private notify() {
@@ -21,6 +28,16 @@ class ToastManager {
     this.notify();
   }
 
+  private createToast(type: ToastTypes, title: string, options?: ToastOptions) {
+    this.add({
+      id: this.generateToastId(),
+      title,
+      type,
+      state: ToastStates.Visible,
+      ...options,
+    });
+  }
+
   updateState(id: number, value: ToastStates) {
     this.toasts = this.toasts.map((toast) =>
       toast.id === id ? { ...toast, state: value } : toast,
@@ -33,45 +50,17 @@ class ToastManager {
     this.notify();
   }
 
-  success(title: string, options?: ToastOptions) {
-    this.add({
-      id: this.generateToastId(),
-      title,
-      type: ToastTypes.Success,
-      state: ToastStates.Visible,
-      ...options,
-    });
-  }
+  success = (title: string, options?: ToastOptions) =>
+    this.createToast(ToastTypes.Success, title, options);
 
-  error(title: string, options?: ToastOptions) {
-    this.add({
-      id: this.generateToastId(),
-      title,
-      type: ToastTypes.Error,
-      state: ToastStates.Visible,
-      ...options,
-    });
-  }
+  error = (title: string, options?: ToastOptions) =>
+    this.createToast(ToastTypes.Error, title, options);
 
-  info(title: string, options?: ToastOptions) {
-    this.add({
-      id: this.generateToastId(),
-      title,
-      type: ToastTypes.Info,
-      state: ToastStates.Visible,
-      ...options,
-    });
-  }
+  info = (title: string, options?: ToastOptions) =>
+    this.createToast(ToastTypes.Info, title, options);
 
-  warning(title: string, options?: ToastOptions) {
-    this.add({
-      id: this.generateToastId(),
-      title,
-      type: ToastTypes.Warning,
-      state: ToastStates.Visible,
-      ...options,
-    });
-  }
+  warning = (title: string, options?: ToastOptions) =>
+    this.createToast(ToastTypes.Warning, title, options);
 }
 
 const toast = new ToastManager();

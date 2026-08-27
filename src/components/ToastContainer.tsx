@@ -3,13 +3,27 @@ import "../styles/ToastContainer.css";
 import { useEffect, useState } from "react";
 import toast from "../toasts/ToastManager";
 
+let hasMountedContainer = false;
+
 function ToastContainer() {
   const [toasts, setToasts] = useState<Toast[]>([]);
   // console.log("toasts in ToastContainer---->", toasts);
 
   useEffect(() => {
-    toast.subscribe(setToasts);
-  });
+    if (hasMountedContainer) {
+      console.error(
+        "[toastora] Multiple <ToastContainer /> instances detected. " +
+          "Render <ToastContainer /> only once in your app, typically near the root.",
+      );
+      return; // don't subscribe the second one at all
+    }
+    hasMountedContainer = true;
+    const unsubscribe = toast.subscribe(setToasts);
+    return () => {
+      unsubscribe();
+      hasMountedContainer = false;
+    };
+  }, []);
   return (
     <div className="toasts-container">
       {toasts.length !== 0 &&
