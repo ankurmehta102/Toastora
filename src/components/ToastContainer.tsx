@@ -5,6 +5,7 @@ import toast from "../toasts/ToastManager";
 
 function ToastContainer() {
   const [toasts, setToasts] = useState<Toast[]>([]);
+  // console.log("toasts in ToastContainer---->", toasts);
 
   useEffect(() => {
     toast.subscribe(setToasts);
@@ -14,10 +15,12 @@ function ToastContainer() {
       {toasts.length !== 0 &&
         toasts.map((toast) => (
           <Toast
+            key={toast.id}
             id={toast.id}
             type={toast.type}
             title={toast.title}
             desc={toast.desc}
+            state={toast.state}
           />
         ))}
     </div>

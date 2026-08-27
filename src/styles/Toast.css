@@ -31,7 +31,28 @@
   padding: 12px 13px;
   border: 2px solid;
   border-radius: 10px;
+
+  /* transition: transform 0.2s linear; */
+  transition: transform 300ms
+    linear(
+      0,
+      0.013 0.6%,
+      0.05 1.2%,
+      0.2 2.5%,
+      0.971 47.2%,
+      1.012 59.1%,
+      0.995 70.8%,
+      1
+    );
+  @starting-style {
+    transform: translateX(100%);
+  }
 }
+
+.slide-out-animation {
+  transform: translateX(110%);
+}
+
 .toast[data-type="success"] {
   background-color: var(--toast-success-bg);
   border-color: var(--toast-success-text);
