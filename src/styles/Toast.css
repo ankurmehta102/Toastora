@@ -23,6 +23,7 @@
 .toast {
   display: flex;
   justify-content: center;
+  align-items: center;
 
   width: 350px;
   box-sizing: border-box;
@@ -52,14 +53,27 @@
   color: var(--toast-warning-text);
 }
 
-.toast-content {
-  flex: 4;
+.toast-icon-container {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast-content {
+  flex: 1;
+  margin-left: 12px;
+  margin-right: 5px;
+  display: flex;
+  justify-content: center;
   flex-direction: column;
   gap: 2px;
 }
 
 .toast-title {
+  margin: 0%;
   font-size: medium;
   font-weight: bold;
 }
@@ -67,4 +81,15 @@
 .toast-desc {
   font-size: small;
   font-weight: 400;
+}
+
+.toast-cancel-button-container {
+  /* flex: 1;
+   */
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: end;
+  align-items: center;
 }

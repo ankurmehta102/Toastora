@@ -1,8 +1,7 @@
 .toast-cancel-button {
-  flex: 1;
+  /* flex: 1; */
   background-color: transparent;
   border: none;
-  font-size: x-large;
   color: inherit;
   cursor: pointer;
   margin: 0;
