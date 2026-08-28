@@ -17,16 +17,20 @@ export type Toast = {
   state: ToastStates;
   desc?: string;
   duration?: number;
+  containerId: string;
 };
 
 export type CancelButtonProps = Pick<Toast, "id">;
-export type ToastOptions = Pick<Toast, "desc" | "duration">;
+export type ToastOptions = Pick<Toast, "desc" | "duration"> &
+  Partial<Pick<Toast, "containerId">>;
 
 export type ToastPosition =
   | "top-right"
   | "top-left"
   | "bottom-right"
   | "bottom-left";
+
 export type ToastContainerProps = {
   position?: ToastPosition;
+  containerId?: string;
 };

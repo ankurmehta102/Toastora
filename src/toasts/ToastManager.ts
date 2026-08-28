@@ -2,21 +2,36 @@ import { ToastOptions, ToastStates, ToastTypes, type Toast } from "./types";
 
 class ToastManager {
   private toasts: Toast[] = [];
-  private listener: ((toasts: Toast[]) => void) | null = null;
+  private listeners = new Set<() => void>();
 
-  subscribe(listener: (toasts: Toast[]) => void) {
-    this.listener = listener;
-    listener(this.toasts);
+  private snapshotCache = new Map<string, Toast[]>();
 
-    return () => {
-      if (this.listener === listener) {
-        this.listener = null;
-      }
-    };
+  subscribe = (onStoreChange: () => void) => {
+    this.listeners.add(onStoreChange);
+    return () => this.listeners.delete(onStoreChange);
+  };
+
+  getSnapshot = (containerId: string) => {
+    const filtered = this.toasts.filter((t) => t.containerId === containerId);
+    const cached = this.snapshotCache.get(containerId);
+
+    if (cached && this.shallowEqualById(cached, filtered)) {
+      return cached; // same reference -> no re-render
+    }
+
+    this.snapshotCache.set(containerId, filtered);
+    return filtered;
+  };
+
+  private shallowEqualById(a: Toast[], b: Toast[]) {
+    if (a.length !== b.length) return false;
+    return a.every((toast, i) => toast === b[i]); // reference equality per item
   }
 
   private notify() {
-    this.listener?.(this.toasts);
+    for (const listener of this.listeners) {
+      listener();
+    }
   }
 
   private generateToastId() {
@@ -34,6 +49,7 @@ class ToastManager {
       title,
       type,
       state: ToastStates.Visible,
+      containerId: options?.containerId || "default",
       ...options,
     });
   }
