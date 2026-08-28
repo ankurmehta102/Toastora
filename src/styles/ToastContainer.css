@@ -1,9 +1,31 @@
 .toasts-container {
   width: 360px;
-  top: 10px;
-  right: 10px;
   position: fixed;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  --slide-x: 100%;
+}
+.toasts-container[data-position^="top-"] {
+  top: 10px;
+}
+.toasts-container[data-position^="bottom-"] {
+  bottom: 10px;
+}
+.toasts-container[data-position$="-right"] {
+  right: 10px;
+}
+.toasts-container[data-position$="-left"] {
+  left: 10px;
+  --slide-x: -100%;
+}
+
+.toasts-container .toast {
+  @starting-style {
+    transform: translateX(var(--slide-x));
+  }
+}
+
+.toasts-container .slide-out-animation {
+  transform: translateX(calc(var(--slide-x) * 1.1));
 }

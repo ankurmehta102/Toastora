@@ -21,3 +21,12 @@ export type Toast = {
 
 export type CancelButtonProps = Pick<Toast, "id">;
 export type ToastOptions = Pick<Toast, "desc" | "duration">;
+
+export type ToastPosition =
+  | "top-right"
+  | "top-left"
+  | "bottom-right"
+  | "bottom-left";
+export type ToastContainerProps = {
+  position?: ToastPosition;
+};

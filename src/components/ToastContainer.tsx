@@ -2,10 +2,11 @@ import Toast from "./Toast";
 import "../styles/ToastContainer.css";
 import { useEffect, useState } from "react";
 import toast from "../toasts/ToastManager";
+import { ToastContainerProps } from "../toasts/types";
 
 let hasMountedContainer = false;
 
-function ToastContainer() {
+function ToastContainer({ position = "top-right" }: ToastContainerProps) {
   const [toasts, setToasts] = useState<Toast[]>([]);
   // console.log("toasts in ToastContainer---->", toasts);
 
@@ -25,7 +26,7 @@ function ToastContainer() {
     };
   }, []);
   return (
-    <div className="toasts-container">
+    <div data-position={position} className="toasts-container">
       {toasts.length !== 0 &&
         toasts.map((toast) => (
           <Toast
