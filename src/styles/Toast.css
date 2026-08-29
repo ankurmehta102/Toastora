@@ -34,7 +34,7 @@
   overflow: hidden;
 
   /* transition: transform 0.2s linear; */
-  transition: transform 300ms
+  /* transition: transform 300ms
     linear(
       0,
       0.013 0.6%,
@@ -44,7 +44,7 @@
       1.012 59.1%,
       0.995 70.8%,
       1
-    );
+    ); */
 }
 
 .toast[data-type="success"] {

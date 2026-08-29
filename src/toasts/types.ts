@@ -34,3 +34,10 @@ export type ToastContainerProps = {
   position?: ToastPosition;
   containerId?: string;
 };
+
+export type TransitionProps = {
+  duration: number;
+  children: React.ReactNode;
+  isExiting: boolean;
+  onTransitionEnd: () => void;
+};
