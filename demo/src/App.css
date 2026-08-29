@@ -1,3 +1,55 @@
 body {
   background-color: #343131;
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.demo-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.demo-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.demo-show-notification {
+  height: 40px;
+  width: 100px;
+}
+
+.demo-opt-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.duration-input {
+  width: 100px;
+}
+.progress-label {
+  color: aliceblue;
+  display: flex;
+  gap: 2px;
+}
+.duration-label {
+  color: aliceblue;
+  display: flex;
+  gap: 2px;
+}
+
+.demo-opt-container select {
+  width: 100px;
+}
