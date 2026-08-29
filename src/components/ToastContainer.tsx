@@ -8,13 +8,17 @@ import Transition from "./Transition";
 function ToastContainer({
   position = "top-right",
   containerId = "default",
+  theme,
 }: ToastContainerProps) {
   const toasts = useSyncExternalStore(toast.subscribe, () =>
     toast.getSnapshot(containerId),
   );
 
   return (
-    <div data-position={position} className="toasts-container">
+    <div
+      data-position={position}
+      className={`toasts-container ${theme === "dark" ? "dark" : ""}`}
+    >
       {toasts.length !== 0 &&
         toasts.map((toastData) => (
           <Transition

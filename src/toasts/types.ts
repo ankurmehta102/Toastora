@@ -33,6 +33,7 @@ export type ToastPosition =
 export type ToastContainerProps = {
   position?: ToastPosition;
   containerId?: string;
+  theme: "dark" | "light";
 };
 
 export type TransitionProps = {

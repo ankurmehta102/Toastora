@@ -1,25 +1,3 @@
-:root {
-  /* Success */
-  --toast-success-bg: #f0fdf4;
-  --toast-success-text: #166534;
-  --toast-success-accent: #22c55e;
-
-  /* Error */
-  --toast-error-bg: #fef2f2;
-  --toast-error-text: #991b1b;
-  --toast-error-accent: #ef4444;
-
-  /* Info */
-  --toast-info-bg: #eff6ff;
-  --toast-info-text: #1e40af;
-  --toast-info-accent: #3b82f6;
-
-  /* Warning */
-  --toast-warning-bg: #fffbeb;
-  --toast-warning-text: #92400e;
-  --toast-warning-accent: #f59e0b;
-}
-
 .toast {
   display: flex;
   justify-content: center;
