@@ -5,6 +5,7 @@ class ToastManager {
   private listeners = new Set<() => void>();
 
   private snapshotCache = new Map<string, Toast[]>();
+  private timers = new Map<number, ReturnType<typeof setTimeout>>();
 
   subscribe = (onStoreChange: () => void) => {
     this.listeners.add(onStoreChange);
@@ -40,6 +41,13 @@ class ToastManager {
 
   private add(toast: Toast) {
     this.toasts = [toast, ...this.toasts];
+    if (typeof toast.duration === "number") {
+      const timer = setTimeout(() => {
+        this.updateState(toast.id, ToastStates.Exiting);
+      }, toast.duration);
+
+      this.timers.set(toast.id, timer);
+    }
     this.notify();
   }
 
@@ -62,6 +70,11 @@ class ToastManager {
   }
 
   remove(id: number) {
+    const timer = this.timers.get(id);
+    if (timer) {
+      clearTimeout(timer);
+      this.timers.delete(id);
+    }
     this.toasts = this.toasts.filter((toast) => toast.id !== id);
     this.notify();
   }
