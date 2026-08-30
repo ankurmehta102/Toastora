@@ -30,14 +30,24 @@ export type ToastProps = {
   containerId: string;
   dismissToast: () => void;
 };
-export type CustomToastProps = Partial<ToastProps>;
+export type CustomToastProps = {
+  id?: number;
+  type?: ToastTypes;
+  title?: string;
+  state: ToastStates;
+  desc?: string;
+  duration?: number;
+  containerId?: string;
+  dismissToast?: () => void;
+};
 
 export type CancelButtonProps = { onClick: () => void };
-export type ToastOptions = Pick<
-  Toast,
-  "desc" | "duration" | "customComponent"
-> &
-  Partial<Pick<Toast, "containerId">>;
+export type ToastOptions = {
+  desc?: string;
+  duration?: number;
+  customComponent?: ComponentType<CustomToastProps>;
+  containerId?: string;
+};
 
 export type ToastPosition =
   | "top-right"
