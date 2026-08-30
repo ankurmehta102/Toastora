@@ -43,7 +43,7 @@ class ToastManager {
     this.toasts = [toast, ...this.toasts];
     if (typeof toast.duration === "number") {
       const timer = setTimeout(() => {
-        this.updateState(toast.id, ToastStates.Exiting);
+        this.updateState(toast.id, "exiting");
       }, toast.duration);
 
       this.timers.set(toast.id, timer);
@@ -56,7 +56,7 @@ class ToastManager {
       id: this.generateToastId(),
       title,
       type,
-      state: ToastStates.Visible,
+      state: "visible",
       containerId: options?.containerId || "default",
       ...options,
     });

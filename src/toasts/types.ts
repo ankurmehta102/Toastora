@@ -1,3 +1,5 @@
+import { ComponentType } from "react";
+
 export enum ToastTypes {
   Success = "success",
   Error = "error",
@@ -5,10 +7,7 @@ export enum ToastTypes {
   Warning = "warning",
 }
 
-export enum ToastStates {
-  Exiting = "exiting",
-  Visible = "visible",
-}
+export type ToastStates = "exiting" | "visible";
 
 export type Toast = {
   id: number;
@@ -18,10 +17,26 @@ export type Toast = {
   desc?: string;
   duration?: number;
   containerId: string;
+  customComponent?: ComponentType<CustomToastProps>;
 };
 
-export type CancelButtonProps = Pick<Toast, "id">;
-export type ToastOptions = Pick<Toast, "desc" | "duration"> &
+export type ToastProps = {
+  id?: number;
+  type: ToastTypes;
+  title: string;
+  state: ToastStates;
+  desc?: string;
+  duration?: number;
+  containerId: string;
+  dismissToast: () => void;
+};
+export type CustomToastProps = Partial<ToastProps>;
+
+export type CancelButtonProps = { onClick: () => void };
+export type ToastOptions = Pick<
+  Toast,
+  "desc" | "duration" | "customComponent"
+> &
   Partial<Pick<Toast, "containerId">>;
 
 export type ToastPosition =
@@ -33,7 +48,7 @@ export type ToastPosition =
 export type ToastContainerProps = {
   position?: ToastPosition;
   containerId?: string;
-  theme: "dark" | "light";
+  theme?: "dark" | "light";
 };
 
 export type TransitionProps = {

@@ -23,7 +23,7 @@
 
   --slide-x: 100%;
 
-  width: 360px;
+  /* width: 360px; */
   position: fixed;
   display: flex;
   flex-direction: column;

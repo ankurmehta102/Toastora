@@ -2,7 +2,7 @@ import Toast from "./Toast";
 import "../styles/ToastContainer.css";
 import { useSyncExternalStore } from "react";
 import toast from "../toasts/ToastManager";
-import { ToastContainerProps, ToastStates } from "../toasts/types";
+import { ToastContainerProps } from "../toasts/types";
 import Transition from "./Transition";
 
 function ToastContainer({
@@ -20,25 +20,30 @@ function ToastContainer({
       className={`toasts-container ${theme === "dark" ? "dark" : ""}`}
     >
       {toasts.length !== 0 &&
-        toasts.map((toastData) => (
-          <Transition
-            duration={300}
-            isExiting={toastData.state === ToastStates.Exiting}
-            onTransitionEnd={() => toast.remove(toastData.id)}
-            key={toastData.id}
-          >
-            <Toast
+        toasts.map((toastData) => {
+          const ToastComponent = toastData.customComponent ?? Toast;
+          return (
+            <Transition
+              duration={300}
+              isExiting={toastData.state === "exiting"}
+              onTransitionEnd={() => toast.remove(toastData.id)}
               key={toastData.id}
-              id={toastData.id}
-              type={toastData.type}
-              title={toastData.title}
-              desc={toastData?.desc}
-              state={toastData.state}
-              duration={toastData?.duration}
-              containerId={containerId}
-            />
-          </Transition>
-        ))}
+            >
+              <ToastComponent
+                id={toastData.id}
+                type={toastData.type}
+                title={toastData.title}
+                desc={toastData?.desc}
+                state={toastData.state}
+                duration={toastData?.duration}
+                containerId={containerId}
+                dismissToast={() => {
+                  toast.updateState(toastData.id, "exiting");
+                }}
+              />
+            </Transition>
+          );
+        })}
     </div>
   );
 }

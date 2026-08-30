@@ -3,7 +3,7 @@ import InfoIcon from "../icons/InfoIcon";
 import SuccessIcon from "../icons/SuccessIcon";
 import WarningIcon from "../icons/WarningIcon";
 import "../styles/Toast.css";
-import type { Toast } from "../toasts/types";
+import type { ToastProps } from "../toasts/types";
 import CancelButton from "./CancelButton";
 
 const icons = {
@@ -13,7 +13,7 @@ const icons = {
   warning: <WarningIcon />,
 };
 
-function Toast({ id, title, type, desc, duration }: Toast) {
+function Toast({ title, type, desc, duration, dismissToast }: ToastProps) {
   return (
     <div data-type={type} className={`toast`}>
       <div className="toast-icon-container">{icons[type]}</div>
@@ -22,7 +22,7 @@ function Toast({ id, title, type, desc, duration }: Toast) {
         {desc && <span className="toast-desc">{desc}</span>}
       </div>
       <div className="toast-cancel-button-container">
-        <CancelButton id={id} />
+        <CancelButton onClick={dismissToast} />
       </div>
       {typeof duration === "number" && (
         <div
