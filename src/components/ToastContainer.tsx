@@ -1,17 +1,17 @@
 import Toast from "./Toast";
 import "../styles/ToastContainer.css";
 import { useSyncExternalStore } from "react";
-import toast from "../toasts/ToastManager";
 import { ToastContainerProps } from "../toasts/types";
 import Transition from "./Transition";
+import store from "../store/ToastStore";
 
 function ToastContainer({
   position = "top-right",
   containerId = "default",
   theme,
 }: ToastContainerProps) {
-  const toasts = useSyncExternalStore(toast.subscribe, () =>
-    toast.getSnapshot(containerId),
+  const toasts = useSyncExternalStore(store.subscribe, () =>
+    store.getSnapshot(containerId),
   );
 
   return (
@@ -26,7 +26,7 @@ function ToastContainer({
             <Transition
               duration={300}
               isExiting={toastData.state === "exiting"}
-              onTransitionEnd={() => toast.remove(toastData.id)}
+              onTransitionEnd={() => store.remove(toastData.id)}
               key={toastData.id}
             >
               <ToastComponent
@@ -38,7 +38,7 @@ function ToastContainer({
                 duration={toastData?.duration}
                 containerId={containerId}
                 dismissToast={() => {
-                  toast.updateState(toastData.id, "exiting");
+                  store.updateState(toastData.id, "exiting");
                 }}
               />
             </Transition>
