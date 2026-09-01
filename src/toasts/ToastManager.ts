@@ -2,8 +2,9 @@ import { type ToastOptions, ToastTypes } from "./types";
 import store from "../store/ToastStore";
 
 class ToastManager {
+  private toastIdCounter = 0;
   private generateToastId() {
-    return new Date().getTime();
+    return ++this.toastIdCounter;
   }
 
   private createToast(type: ToastTypes, title: string, options?: ToastOptions) {
