@@ -4,12 +4,28 @@ import ToastContainer from "../../src/components/ToastContainer";
 import toast from "../../src/toasts/ToastManager";
 // import { toast, ToastContainer } from "toastora";
 import type { ToastPosition } from "../../src/toasts/types";
+// import CustomToast from "./CustomToast";
+
+const TOAST_TYPES = [
+  { value: "success", label: "Success" },
+  { value: "error", label: "Error" },
+  { value: "info", label: "Info" },
+  { value: "warning", label: "Warning" },
+] as const;
+
+const TOAST_POSITIONS = [
+  { value: "top-right", label: "Top Right" },
+  { value: "top-left", label: "Top Left" },
+  { value: "bottom-right", label: "Bottom Right" },
+  { value: "bottom-left", label: "Bottom Left" },
+] as const;
 
 function App() {
   const [position, setPosition] = useState<ToastPosition>("top-left");
   const [btnType, setBtnType] = useState("success");
   const [duration, setDuration] = useState<number>(5000);
   const [noDuration, setNoDuration] = useState<boolean>(false);
+  const [isDark, setIsDark] = useState<boolean>(false);
   const handlePositionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setPosition(e.target.value as ToastPosition);
   };
@@ -42,6 +58,13 @@ function App() {
         break;
     }
   };
+  const handleNoDurationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNoDuration(e.target.checked);
+  };
+
+  const handleDarkModeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsDark(e.target.checked);
+  };
 
   const successNotification = () => {
     toast.success(
@@ -50,6 +73,7 @@ function App() {
       {
         desc: "Your profile information has been updated successfully.",
         duration: noDuration ? undefined : duration,
+        // customComponent: CustomToast,
       },
     );
   };
@@ -84,16 +108,18 @@ function App() {
 
         <div className="demo-opt-container">
           <select value={btnType} onChange={handleBtnTypeChange}>
-            <option value="success">Success</option>
-            <option value="error">Error</option>
-            <option value="info">Info</option>
-            <option value="warning">Warning</option>
+            {TOAST_TYPES.map(({ value, label }) => (
+              <option key={value} value={value}>
+                {label}
+              </option>
+            ))}
           </select>
           <select value={position} onChange={handlePositionChange}>
-            <option value="top-right">Top Right</option>
-            <option value="top-left">Top Left</option>
-            <option value="bottom-right">Bottom Right</option>
-            <option value="bottom-left">Bottom Left</option>
+            {TOAST_POSITIONS.map(({ value, label }) => (
+              <option key={value} value={value}>
+                {label}
+              </option>
+            ))}
           </select>
           <label className="duration-label">
             <input
@@ -110,14 +136,26 @@ function App() {
             <input
               type="checkbox"
               checked={noDuration}
-              onChange={(e) => setNoDuration(e.target.checked)}
+              onChange={handleNoDurationChange}
             />
             No Duration
+          </label>
+
+          <label className="dark-mode-label">
+            <input
+              type="checkbox"
+              checked={isDark}
+              onChange={handleDarkModeChange}
+            />
+            Dark Mode
           </label>
         </div>
       </div>
 
-      <ToastContainer position={position}></ToastContainer>
+      <ToastContainer
+        position={position}
+        theme={isDark ? "dark" : "light"}
+      ></ToastContainer>
     </>
   );
 }
