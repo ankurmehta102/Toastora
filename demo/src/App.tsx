@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./App.css";
 import ToastContainer from "../../src/components/ToastContainer";
 import toast from "../../src/toasts/ToastManager";
-// import { toast, ToastContainer } from "toastora";
 import type { ToastPosition } from "../../src/toasts/types";
+// import { toast, ToastContainer } from "toastora";
 // import CustomToast from "./CustomToast";
 
 const TOAST_TYPES = [
@@ -61,7 +61,6 @@ function App() {
   const handleNoDurationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNoDuration(e.target.checked);
   };
-
   const handleDarkModeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsDark(e.target.checked);
   };
@@ -96,62 +95,76 @@ function App() {
 
   return (
     <>
-      <div className="demo-container">
-        <div className="demo-btn-container">
-          <button
-            className="demo-show-notification"
-            onClick={handleShowNotification}
-          >
-            Show Notification
+      <div className="demo-card">
+        <div className="demo-card__options-wrapper">
+          <div className="demo-card__options-group">
+            <div className="field">
+              <label className="field__label">Type</label>
+              <select
+                className="field__select"
+                value={btnType}
+                onChange={handleBtnTypeChange}
+              >
+                {TOAST_TYPES.map(({ value, label }) => (
+                  <option key={value} value={value}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="field">
+              <label className="field__label">Position</label>
+              <select
+                className="field__select"
+                value={position}
+                onChange={handlePositionChange}
+              >
+                {TOAST_POSITIONS.map(({ value, label }) => (
+                  <option key={value} value={value}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="field">
+              <label className="field__label">Duration</label>
+              <input
+                className="field__input"
+                type="number"
+                value={duration}
+                onChange={handleDurationChange}
+                disabled={noDuration}
+              />
+            </div>
+          </div>
+          <div className="demo-card__options-group demo-card__options-group--horizontal">
+            <div className="field field--checkbox">
+              <input
+                className="field__checkbox"
+                type="checkbox"
+                checked={noDuration}
+                onChange={handleNoDurationChange}
+              />
+              <label className="field__label">No Duration</label>
+            </div>
+
+            <div className="field field--checkbox">
+              <input
+                className="field__checkbox"
+                type="checkbox"
+                checked={isDark}
+                onChange={handleDarkModeChange}
+              />
+              <label className="field__label">Dark Mode</label>
+            </div>
+          </div>
+        </div>
+        <div className="demo-card__actions-wrapper">
+          <button className="button" onClick={handleShowNotification}>
+            Notifiy
           </button>
         </div>
-
-        <div className="demo-opt-container">
-          <select value={btnType} onChange={handleBtnTypeChange}>
-            {TOAST_TYPES.map(({ value, label }) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-          <select value={position} onChange={handlePositionChange}>
-            {TOAST_POSITIONS.map(({ value, label }) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-          <label className="duration-label">
-            <input
-              className="duration-input"
-              type="number"
-              value={duration}
-              onChange={handleDurationChange}
-              disabled={noDuration}
-            />
-            ms duration
-          </label>
-
-          <label className="progress-label">
-            <input
-              type="checkbox"
-              checked={noDuration}
-              onChange={handleNoDurationChange}
-            />
-            No Duration
-          </label>
-
-          <label className="dark-mode-label">
-            <input
-              type="checkbox"
-              checked={isDark}
-              onChange={handleDarkModeChange}
-            />
-            Dark Mode
-          </label>
-        </div>
       </div>
-
       <ToastContainer
         position={position}
         theme={isDark ? "dark" : "light"}
