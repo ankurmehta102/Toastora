@@ -1,4 +1,5 @@
-import type { CustomToastProps } from "../../src/toasts/types";
+import type { CustomToastProps } from "../../../src/toasts/types";
+import "../styles/CustomToast.css";
 
 const CustomToast = ({ title, desc, dismissToast }: CustomToastProps) => {
   return (

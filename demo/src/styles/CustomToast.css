@@ -1,0 +1,31 @@
+.custom-toast {
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+.custom-toast-content {
+  min-width: 0;
+}
+.custom-toast-content strong {
+  display: block;
+  font-size: 15px;
+}
+.custom-toast-content p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+.custom-toast button {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 500;
+}

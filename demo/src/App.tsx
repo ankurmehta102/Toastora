@@ -23,7 +23,7 @@ const TOAST_POSITIONS = [
 function App() {
   const [position, setPosition] = useState<ToastPosition>("top-left");
   const [btnType, setBtnType] = useState("success");
-  const [duration, setDuration] = useState<number>(5000);
+  const [duration, setDuration] = useState<number | "">(5000);
   const [noDuration, setNoDuration] = useState<boolean>(false);
   const [isDark, setIsDark] = useState<boolean>(false);
   const handlePositionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -31,7 +31,8 @@ function App() {
   };
 
   const handleDurationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDuration(Number(e.target.value));
+    const duration = e.target.value === "" ? "" : Number(e.target.value);
+    setDuration(duration);
   };
   const handleBtnTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setBtnType(e.target.value);
@@ -71,7 +72,7 @@ function App() {
 
       {
         desc: "Your profile information has been updated successfully.",
-        duration: noDuration ? undefined : duration,
+        duration: noDuration ? undefined : Number(duration),
         // customComponent: CustomToast,
       },
     );
@@ -79,18 +80,18 @@ function App() {
   const errorNotification = () => {
     toast.error("Payment Failed", {
       desc: "We couldn't process your payment. Please check your payment details and try again.",
-      duration: noDuration ? undefined : duration,
+      duration: noDuration ? undefined : Number(duration),
     });
   };
   const infoNotification = () =>
     toast.info("New Update Available", {
       desc: "A new version of the application is available. Update now to get the latest features and improvements.",
-      duration: noDuration ? undefined : duration,
+      duration: noDuration ? undefined : Number(duration),
     });
   const warningNotification = () =>
     toast.warning("Storage Almost Full", {
       desc: "You're running low on storage space. Consider deleting some unused files to free up space.",
-      duration: noDuration ? undefined : duration,
+      duration: noDuration ? undefined : Number(duration),
     });
 
   return (
