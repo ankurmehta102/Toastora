@@ -1,58 +1,69 @@
-.toasts-container,
-.toasts-container *,
-.toasts-container *::before,
-.toasts-container *::after {
+.toasts,
+.toasts *,
+.toasts *::before,
+.toasts *::after {
   box-sizing: border-box;
 }
 
-.toasts-container {
+.toasts {
+  /*default theme*/
   --toast-success-bg: #f0fdf4;
-  --toast-success-text: #166534;
+  --toast-success-text-primary: #166534;
+  --toast-success-text-secondary: #15803d;
 
-  /* Error */
   --toast-error-bg: #fef2f2;
-  --toast-error-text: #991b1b;
+  --toast-error-text-primary: #991b1b;
+  --toast-error-text-secondary: #b91c1c;
 
-  /* Info */
   --toast-info-bg: #eff6ff;
-  --toast-info-text: #1e40af;
+  --toast-info-text-primary: #1e40af;
+  --toast-info-text-secondary: #1d4ed8;
 
-  /* Warning */
   --toast-warning-bg: #fffbeb;
-  --toast-warning-text: #92400e;
+  --toast-warning-text-primary: #92400e;
+  --toast-warning-text-secondary: #b45309;
 
-  --slide-x: 100%;
-
-  /* width: 360px; */
   position: fixed;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.toasts-container[data-position^="top-"] {
+
+.toasts--top-right {
   top: 10px;
-}
-.toasts-container[data-position^="bottom-"] {
-  bottom: 10px;
-}
-.toasts-container[data-position$="-right"] {
   right: 10px;
+  --slide-x: 100%;
 }
-.toasts-container[data-position$="-left"] {
+.toasts--top-left {
+  top: 10px;
+  left: 10px;
+  --slide-x: -100%;
+}
+.toasts--bottom-right {
+  bottom: 10px;
+  right: 10px;
+  --slide-x: 100%;
+}
+.toasts--bottom-left {
+  bottom: 10px;
   left: 10px;
   --slide-x: -100%;
 }
 
-.toasts-container.dark {
-  --toast-success-bg: #21261f;
-  --toast-success-text: #7ed99a;
+.toasts[data-theme="dark"] {
+  --toast-success-bg: #052e16;
+  --toast-success-text-primary: #86efac;
+  --toast-success-text-secondary: #4ade80;
 
-  --toast-error-bg: #2b201f;
-  --toast-error-text: #f08886;
+  --toast-error-bg: #450a0a;
+  --toast-error-text-primary: #fca5a5;
+  --toast-error-text-secondary: #f87171;
 
-  --toast-info-bg: #1f2328;
-  --toast-info-text: #83b0f0;
+  --toast-info-bg: #172554;
+  --toast-info-text-primary: #93c5fd;
+  --toast-info-text-secondary: #60a5fa;
 
-  --toast-warning-bg: #2b2419;
-  --toast-warning-text: #eab654;
+  --toast-warning-bg: #451a03;
+  --toast-warning-text-primary: #fcd34d;
+  --toast-warning-text-secondary: #fbbf24;
 }

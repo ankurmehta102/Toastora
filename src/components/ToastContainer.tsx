@@ -8,17 +8,14 @@ import store from "../store/ToastStore";
 function ToastContainer({
   position = "top-right",
   containerId = "default",
-  theme,
+  theme = "light",
 }: ToastContainerProps) {
   const toasts = useSyncExternalStore(store.subscribe, () =>
     store.getSnapshot(containerId),
   );
 
   return (
-    <div
-      data-position={position}
-      className={`toasts-container ${theme === "dark" ? "dark" : ""}`}
-    >
+    <div data-theme={theme} className={`toasts toasts--${position}`}>
       {toasts.length !== 0 &&
         toasts.map((toastData) => {
           const ToastComponent = toastData.customComponent ?? Toast;
