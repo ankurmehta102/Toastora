@@ -1,12 +1,6 @@
 import { ComponentType } from "react";
 
-export enum ToastTypes {
-  Success = "success",
-  Error = "error",
-  Info = "info",
-  Warning = "warning",
-}
-
+export type ToastTypes = "success" | "error" | "info" | "warning";
 export type ToastStates = "exiting" | "visible";
 
 export type Toast = {

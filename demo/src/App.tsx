@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import ToastContainer from "../../src/components/ToastContainer";
 import toast from "../../src/toasts/ToastManager";
-import type { ToastPosition } from "../../src/toasts/types";
+import type { ToastPosition, ToastTypes } from "../../src/toasts/types";
 // import { toast, ToastContainer } from "toastora";
 // import CustomToast from "./CustomToast";
 
@@ -20,44 +20,41 @@ const TOAST_POSITIONS = [
   { value: "bottom-left", label: "Bottom Left" },
 ] as const;
 
+const NOTIFICATION_DATA: Record<ToastTypes, { title: string; desc: string }> = {
+  success: {
+    title: "Profile Updated",
+    desc: "Your profile information has been updated successfully.",
+  },
+  error: {
+    title: "Payment Failed",
+    desc: "We couldn't process your payment. Please check your payment details and try again.",
+  },
+  info: {
+    title: "New Update Available",
+    desc: "A new version of the application is available. Update now to get the latest features and improvements.",
+  },
+  warning: {
+    title: "Storage Almost Full",
+    desc: "You're running low on storage space. Consider deleting some unused files to free up space.",
+  },
+};
+
 function App() {
   const [position, setPosition] = useState<ToastPosition>("top-right");
-  const [btnType, setBtnType] = useState("success");
+  const [toastType, setToastType] = useState<ToastTypes>("success");
   const [duration, setDuration] = useState<number | "">(5000);
   const [noDuration, setNoDuration] = useState<boolean>(false);
   const [isDark, setIsDark] = useState<boolean>(false);
+
   const handlePositionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setPosition(e.target.value as ToastPosition);
   };
-
   const handleDurationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const duration = e.target.value === "" ? "" : Number(e.target.value);
     setDuration(duration);
   };
-  const handleBtnTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setBtnType(e.target.value);
-  };
-  const handleShowNotification = () => {
-    switch (btnType) {
-      case "success":
-        successNotification();
-        break;
-
-      case "error":
-        errorNotification();
-        break;
-
-      case "info":
-        infoNotification();
-        break;
-
-      case "warning":
-        warningNotification();
-        break;
-
-      default:
-        break;
-    }
+  const handleToastTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setToastType(e.target.value as ToastTypes);
   };
   const handleNoDurationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNoDuration(e.target.checked);
@@ -66,33 +63,13 @@ function App() {
     setIsDark(e.target.checked);
   };
 
-  const successNotification = () => {
-    toast.success(
-      "Profile Updated",
-
-      {
-        desc: "Your profile information has been updated successfully.",
-        duration: noDuration ? undefined : Number(duration),
-        // customComponent: CustomToast,
-      },
-    );
-  };
-  const errorNotification = () => {
-    toast.error("Payment Failed", {
-      desc: "We couldn't process your payment. Please check your payment details and try again.",
+  const handleNotify = () => {
+    const { title, desc } = NOTIFICATION_DATA[toastType];
+    toast[toastType](title, {
+      desc,
       duration: noDuration ? undefined : Number(duration),
     });
   };
-  const infoNotification = () =>
-    toast.info("New Update Available", {
-      desc: "A new version of the application is available. Update now to get the latest features and improvements.",
-      duration: noDuration ? undefined : Number(duration),
-    });
-  const warningNotification = () =>
-    toast.warning("Storage Almost Full", {
-      desc: "You're running low on storage space. Consider deleting some unused files to free up space.",
-      duration: noDuration ? undefined : Number(duration),
-    });
 
   return (
     <>
@@ -104,8 +81,8 @@ function App() {
                 <label className="field__label">Type</label>
                 <select
                   className="field__select"
-                  value={btnType}
-                  onChange={handleBtnTypeChange}
+                  value={toastType}
+                  onChange={handleToastTypeChange}
                 >
                   {TOAST_TYPES.map(({ value, label }) => (
                     <option key={value} value={value}>
@@ -149,7 +126,6 @@ function App() {
                 />
                 <label className="field__label">No Duration</label>
               </div>
-
               <div className="field field--checkbox">
                 <input
                   className="field__checkbox"
@@ -162,8 +138,8 @@ function App() {
             </div>
           </div>
           <div className="demo-card__actions-wrapper">
-            <button className="button" onClick={handleShowNotification}>
-              Notifiy
+            <button className="button" onClick={handleNotify}>
+              Notify
             </button>
           </div>
         </div>

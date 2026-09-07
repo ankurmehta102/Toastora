@@ -1,4 +1,4 @@
-import { type ToastOptions, ToastTypes } from "./types";
+import type { ToastOptions, ToastTypes } from "./types";
 import store from "../store/ToastStore";
 
 class ToastManager {
@@ -19,16 +19,16 @@ class ToastManager {
   }
 
   success = (title: string, options?: ToastOptions) =>
-    this.createToast(ToastTypes.Success, title, options);
+    this.createToast("success", title, options);
 
   error = (title: string, options?: ToastOptions) =>
-    this.createToast(ToastTypes.Error, title, options);
+    this.createToast("error", title, options);
 
   info = (title: string, options?: ToastOptions) =>
-    this.createToast(ToastTypes.Info, title, options);
+    this.createToast("info", title, options);
 
   warning = (title: string, options?: ToastOptions) =>
-    this.createToast(ToastTypes.Warning, title, options);
+    this.createToast("warning", title, options);
 }
 
 const toast = new ToastManager();
