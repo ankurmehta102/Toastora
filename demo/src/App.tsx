@@ -21,7 +21,7 @@ const TOAST_POSITIONS = [
 ] as const;
 
 function App() {
-  const [position, setPosition] = useState<ToastPosition>("top-left");
+  const [position, setPosition] = useState<ToastPosition>("top-right");
   const [btnType, setBtnType] = useState("success");
   const [duration, setDuration] = useState<number | "">(5000);
   const [noDuration, setNoDuration] = useState<boolean>(false);
@@ -96,74 +96,76 @@ function App() {
 
   return (
     <>
-      <div className="demo-card">
-        <div className="demo-card__options-wrapper">
-          <div className="demo-card__options-group">
-            <div className="field">
-              <label className="field__label">Type</label>
-              <select
-                className="field__select"
-                value={btnType}
-                onChange={handleBtnTypeChange}
-              >
-                {TOAST_TYPES.map(({ value, label }) => (
-                  <option key={value} value={value}>
-                    {label}
-                  </option>
-                ))}
-              </select>
+      <div className="demo-layout">
+        <div className="demo-card">
+          <div className="demo-card__options-wrapper">
+            <div className="demo-card__options-group">
+              <div className="field">
+                <label className="field__label">Type</label>
+                <select
+                  className="field__select"
+                  value={btnType}
+                  onChange={handleBtnTypeChange}
+                >
+                  {TOAST_TYPES.map(({ value, label }) => (
+                    <option key={value} value={value}>
+                      {label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="field">
+                <label className="field__label">Position</label>
+                <select
+                  className="field__select"
+                  value={position}
+                  onChange={handlePositionChange}
+                >
+                  {TOAST_POSITIONS.map(({ value, label }) => (
+                    <option key={value} value={value}>
+                      {label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="field">
+                <label className="field__label">Duration</label>
+                <input
+                  className="field__input"
+                  type="number"
+                  value={duration}
+                  onChange={handleDurationChange}
+                  disabled={noDuration}
+                />
+              </div>
             </div>
-            <div className="field">
-              <label className="field__label">Position</label>
-              <select
-                className="field__select"
-                value={position}
-                onChange={handlePositionChange}
-              >
-                {TOAST_POSITIONS.map(({ value, label }) => (
-                  <option key={value} value={value}>
-                    {label}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="field">
-              <label className="field__label">Duration</label>
-              <input
-                className="field__input"
-                type="number"
-                value={duration}
-                onChange={handleDurationChange}
-                disabled={noDuration}
-              />
-            </div>
-          </div>
-          <div className="demo-card__options-group demo-card__options-group--horizontal">
-            <div className="field field--checkbox">
-              <input
-                className="field__checkbox"
-                type="checkbox"
-                checked={noDuration}
-                onChange={handleNoDurationChange}
-              />
-              <label className="field__label">No Duration</label>
-            </div>
+            <div className="demo-card__options-group demo-card__options-group--horizontal">
+              <div className="field field--checkbox">
+                <input
+                  className="field__checkbox"
+                  type="checkbox"
+                  checked={noDuration}
+                  onChange={handleNoDurationChange}
+                />
+                <label className="field__label">No Duration</label>
+              </div>
 
-            <div className="field field--checkbox">
-              <input
-                className="field__checkbox"
-                type="checkbox"
-                checked={isDark}
-                onChange={handleDarkModeChange}
-              />
-              <label className="field__label">Dark Mode</label>
+              <div className="field field--checkbox">
+                <input
+                  className="field__checkbox"
+                  type="checkbox"
+                  checked={isDark}
+                  onChange={handleDarkModeChange}
+                />
+                <label className="field__label">Dark Mode</label>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="demo-card__actions-wrapper">
-          <button className="button" onClick={handleShowNotification}>
-            Notifiy
-          </button>
+          <div className="demo-card__actions-wrapper">
+            <button className="button" onClick={handleShowNotification}>
+              Notifiy
+            </button>
+          </div>
         </div>
       </div>
       <ToastContainer
