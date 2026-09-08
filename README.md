@@ -27,7 +27,7 @@ function App() {
   return (
     <div>
       <button onClick={notify}>Update Profile</button>
-      <ToastContainer />
+      <ToastContainer theme="dark" />
     </div>
   );
 }
@@ -38,6 +38,12 @@ That's it! You can now trigger toast notifications from anywhere in your React a
 ## Notification Types
 
 Toastora supports different types of notifications for different use cases.
+
+### Default
+
+```tsx
+toast.default("You have a new notification!");
+```
 
 ### Success
 
