@@ -67,3 +67,31 @@
   --toast-warning-text-primary: #fcd34d;
   --toast-warning-text-secondary: #fbbf24;
 }
+
+@media (max-width: 600px) {
+  .toasts {
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .toasts--top-right {
+    top: 10px;
+    right: 0px;
+    --slide-x: 100%;
+  }
+  .toasts--top-left {
+    top: 10px;
+    left: 0px;
+    --slide-x: -100%;
+  }
+  .toasts--bottom-right {
+    bottom: 10px;
+    right: 0px;
+    --slide-x: 100%;
+  }
+  .toasts--bottom-left {
+    bottom: 10px;
+    left: 0px;
+    --slide-x: -100%;
+  }
+}

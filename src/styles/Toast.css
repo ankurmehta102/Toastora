@@ -67,6 +67,7 @@
   font-size: 12px;
   font-weight: 400;
   color: var(--toast-text-secondary);
+  text-wrap: pretty;
 }
 
 .toast__dismiss-btn-wrapper {
@@ -106,5 +107,11 @@
   }
   to {
     width: 0%;
+  }
+}
+
+@media (max-width: 600px) {
+  .toast {
+    width: 100%;
   }
 }
