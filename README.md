@@ -1,23 +1,23 @@
-# Toastora
+# Toastly
 
 A lightweight library for managing toast notifications in your React projects.
 
 ## Installation
 
-Install Toastora using npm:
+Install toastly using npm:
 
 ```bash
-npm install toastora
+npm install toastly
 ```
 
 ## Getting Started
 
-Import `ToastContainer` and `toast` from Toastora, then add `ToastContainer` to your app.
+Import `ToastContainer` and `toast` from toastly, then add `ToastContainer` to your app.
 
 Toast notifications will be rendered inside the `ToastContainer`.
 
 ```tsx
-import { ToastContainer, toast } from "toastora";
+import { ToastContainer, toast } from "toastly";
 
 function App() {
   const notify = () => {
@@ -37,7 +37,7 @@ That's it! You can now trigger toast notifications from anywhere in your React a
 
 ## Notification Types
 
-Toastora supports different types of notifications for different use cases.
+toastly supports different types of notifications for different use cases.
 
 ### Default
 
@@ -71,7 +71,7 @@ toast.warning("Your storage is full.");
 
 ## Options
 
-Toastora provides additional options to customize your notifications.
+toastly provides additional options to customize your notifications.
 
 | Option            | Type                  | Description                                                                                                     |
 | ----------------- | --------------------- | --------------------------------------------------------------------------------------------------------------- |
@@ -82,7 +82,7 @@ Toastora provides additional options to customize your notifications.
 
 ## Custom Component
 
-You can create a custom toast component by importing the `CustomToastProps` type from Toastora. This type defines the props that your custom component will receive.
+You can create a custom toast component by importing the `CustomToastProps` type from toastly. This type defines the props that your custom component will receive.
 
 ### CustomToastProps
 
@@ -100,7 +100,7 @@ You can create a custom toast component by importing the `CustomToastProps` type
 ### Example
 
 ```tsx
-import type { CustomToastProps } from "toastora";
+import type { CustomToastProps } from "toastly";
 
 const CustomToast = ({ title, desc, dismissToast }: CustomToastProps) => {
   return (
@@ -123,7 +123,7 @@ export default CustomToast;
 Pass your custom component using the `customComponent` option when creating a toast:
 
 ```tsx
-import { toast } from "toastora";
+import { toast } from "toastly";
 import CustomToast from "./CustomToast";
 
 toast.success("Profile updated successfully!", {
