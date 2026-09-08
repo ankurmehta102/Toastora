@@ -1,26 +1,47 @@
 {
   "name": "toastora",
-  "version": "0.0.1",
-  "description": "Toast Notification library for react. ",
+  "version": "1.0.0",
+  "description": "A lightweight toast notification library for React.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w"
   },
+  "keywords": [
+    "react",
+    "toast",
+    "notification",
+    "toast-notification",
+    "react-toast"
+  ],
   "author": "Ankur Mehta",
   "license": "ISC",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^25.0.7",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-typescript": "^11.1.6",
-    "@types/react": "^18.2.55",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rollup-plugin-dts": "^6.1.0",
-    "rollup-plugin-postcss": "^4.0.2",
-    "tslib": "^2.6.2",
-    "typescript": "^5.3.3"
-  }
+    "@rollup/plugin-commonjs": "25.0.7",
+    "@rollup/plugin-node-resolve": "15.2.3",
+    "@rollup/plugin-typescript": "11.1.6",
+    "@types/react": "18.2.55",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "rollup-plugin-dts": "6.1.0",
+    "rollup-plugin-postcss": "4.0.2",
+    "tslib": "2.6.2",
+    "typescript": "5.3.3"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ankurmehta102/Toastora.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ankurmehta102/Toastora/issues"
+  },
+  "homepage": "https://github.com/ankurmehta102/Toastora#readme"
 }
