@@ -1,5 +1,5 @@
 {
-  "name": "toastora",
+  "name": "toastly",
   "version": "1.0.0",
   "description": "A lightweight toast notification library for React.",
   "main": "dist/cjs/index.js",
@@ -9,7 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\" && rollup -c && node -e \"require('fs').rmSync('dist/esm/types', { recursive: true, force: true }); require('fs').rmSync('dist/cjs/types', { recursive: true, force: true })\"",
     "dev": "rollup -c -w"
   },
   "keywords": [
@@ -38,10 +38,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ankurmehta102/Toastora.git"
+    "url": "https://github.com/ankurmehta102/toastly.git"
   },
   "bugs": {
-    "url": "https://github.com/ankurmehta102/Toastora/issues"
+    "url": "https://github.com/ankurmehta102/toastly/issues"
   },
-  "homepage": "https://github.com/ankurmehta102/Toastora#readme"
+  "homepage": "https://github.com/ankurmehta102/toastly#readme"
 }
