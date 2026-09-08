@@ -1,5 +1,5 @@
 {
-  "name": "toastly",
+  "name": "react-toastora",
   "version": "1.0.0",
   "description": "A lightweight toast notification library for React.",
   "main": "dist/cjs/index.js",
@@ -38,10 +38,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ankurmehta102/toastly.git"
+    "url": "https://github.com/ankurmehta102/react-toastora.git"
   },
   "bugs": {
-    "url": "https://github.com/ankurmehta102/toastly/issues"
+    "url": "https://github.com/ankurmehta102/react-toastora/issues"
   },
-  "homepage": "https://github.com/ankurmehta102/toastly#readme"
+  "homepage": "https://github.com/ankurmehta102/react-toastora#readme"
 }
