@@ -18,6 +18,9 @@ class ToastManager {
     });
   }
 
+  default = (title: string, options?: ToastOptions) =>
+    this.createToast("default", title, options);
+
   success = (title: string, options?: ToastOptions) =>
     this.createToast("success", title, options);
 

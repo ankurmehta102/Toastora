@@ -7,6 +7,7 @@ import type { ToastPosition, ToastTypes } from "../../src/toasts/types";
 // import CustomToast from "./CustomToast";
 
 const TOAST_TYPES = [
+  { value: "default", label: "Default" },
   { value: "success", label: "Success" },
   { value: "error", label: "Error" },
   { value: "info", label: "Info" },
@@ -21,6 +22,10 @@ const TOAST_POSITIONS = [
 ] as const;
 
 const NOTIFICATION_DATA: Record<ToastTypes, { title: string; desc: string }> = {
+  default: {
+    title: "New Notification",
+    desc: "You have a new notification. Please check your account for more details.",
+  },
   success: {
     title: "Profile Updated",
     desc: "Your profile information has been updated successfully.",
@@ -41,7 +46,7 @@ const NOTIFICATION_DATA: Record<ToastTypes, { title: string; desc: string }> = {
 
 function App() {
   const [position, setPosition] = useState<ToastPosition>("top-right");
-  const [toastType, setToastType] = useState<ToastTypes>("success");
+  const [toastType, setToastType] = useState<ToastTypes>("default");
   const [duration, setDuration] = useState<number | "">(5000);
   const [noDuration, setNoDuration] = useState<boolean>(false);
   const [isDark, setIsDark] = useState<boolean>(false);

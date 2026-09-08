@@ -7,6 +7,10 @@
 
 .toasts {
   /*default theme*/
+  --toast-default-bg: #ffffff;
+  --toast-default-text-primary: #18181b;
+  --toast-default-text-secondary: #71717a;
+
   --toast-success-bg: #f0fdf4;
   --toast-success-text-primary: #166534;
   --toast-success-text-secondary: #15803d;
@@ -51,6 +55,10 @@
 }
 
 .toasts[data-theme="dark"] {
+  --toast-default-bg: #18181b;
+  --toast-default-text-primary: #fafafa;
+  --toast-default-text-secondary: #a1a1aa;
+
   --toast-success-bg: #052e16;
   --toast-success-text-primary: #86efac;
   --toast-success-text-secondary: #4ade80;

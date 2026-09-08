@@ -1,4 +1,9 @@
 .toast {
+  /*default*/
+  --toast-bg: var(--toast-default-bg);
+  --toast-text-primary: var(--toast-default-text-primary);
+  --toast-text-secondary: var(--toast-default-text-secondary);
+
   display: flex;
   justify-content: center;
   align-items: center;

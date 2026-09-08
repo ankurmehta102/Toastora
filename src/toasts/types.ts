@@ -1,6 +1,6 @@
 import { ComponentType } from "react";
 
-export type ToastTypes = "success" | "error" | "info" | "warning";
+export type ToastTypes = "default" | "success" | "error" | "info" | "warning";
 export type ToastStates = "exiting" | "visible";
 
 export type Toast = {

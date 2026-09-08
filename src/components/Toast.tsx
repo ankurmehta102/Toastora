@@ -1,4 +1,5 @@
 import CrossIcon from "../icons/CrossIcon";
+import DefaultIcon from "../icons/DefaultIcon";
 import ErrorIcon from "../icons/ErrorIcon";
 import InfoIcon from "../icons/InfoIcon";
 import SuccessIcon from "../icons/SuccessIcon";
@@ -7,6 +8,7 @@ import "../styles/Toast.css";
 import type { ToastProps } from "../toasts/types";
 
 const icons = {
+  default: <DefaultIcon />,
   success: <SuccessIcon />,
   error: <ErrorIcon />,
   info: <InfoIcon />,
