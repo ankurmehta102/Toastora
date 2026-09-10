@@ -2,8 +2,9 @@ function CrossIcon() {
   return (
     <svg
       fill="currentColor"
-      width="15px"
-      height="15px"
+      // width="15px"
+      // height="15px"
+      style={{ width: 15, height: 15, color: "inherit" }}
       viewBox="0 0 24 24"
       id="cross"
     >

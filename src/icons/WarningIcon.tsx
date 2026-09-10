@@ -1,6 +1,12 @@
 function WarningIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 512 512" version="1.1">
+    <svg
+      // width="20"
+      // height="20"
+      style={{ width: 20, height: 20, color: "inherit" }}
+      viewBox="0 0 512 512"
+      version="1.1"
+    >
       <title>warning-filled</title>
 
       <g

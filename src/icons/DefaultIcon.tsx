@@ -1,8 +1,9 @@
 function DefaultIcon() {
   return (
     <svg
-      width="22px"
-      height="22px"
+      // width="22px"
+      // height="22px"
+      style={{ width: 20, height: 20, color: "inherit" }}
       viewBox="0 0 512 512"
       xmlns="http://www.w3.org/2000/svg"
     >

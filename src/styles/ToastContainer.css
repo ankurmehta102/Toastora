@@ -31,6 +31,8 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 0;
+  margin: 0;
 }
 
 .toastora-toasts--top-right {
@@ -85,21 +87,17 @@
   .toastora-toasts--top-right {
     top: 10px;
     right: 0px;
-    --slide-x: 100%;
   }
   .toastora-toasts--top-left {
     top: 10px;
     left: 0px;
-    --slide-x: -100%;
   }
   .toastora-toasts--bottom-right {
     bottom: 10px;
     right: 0px;
-    --slide-x: 100%;
   }
   .toastora-toasts--bottom-left {
     bottom: 10px;
     left: 0px;
-    --slide-x: -100%;
   }
 }

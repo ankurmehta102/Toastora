@@ -1,6 +1,12 @@
 function InfoIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <svg
+      // width="20"
+      // height="20"
+      style={{ width: 20, height: 20, color: "inherit" }}
+      viewBox="0 0 24 24"
+      fill="none"
+    >
       <path
         fillRule="evenodd"
         clipRule="evenodd"
