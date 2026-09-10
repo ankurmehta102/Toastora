@@ -15,7 +15,10 @@ function ToastContainer({
   );
 
   return (
-    <div data-theme={theme} className={`toasts toasts--${position}`}>
+    <div
+      data-theme={theme}
+      className={`toastora-toasts toastora-toasts--${position}`}
+    >
       {toasts.length !== 0 &&
         toasts.map((toastData) => {
           const ToastComponent = toastData.customComponent ?? Toast;
