@@ -4,6 +4,7 @@ import { useSyncExternalStore } from "react";
 import { ToastContainerProps } from "../toasts/types";
 import Transition from "./Transition";
 import store from "../store/ToastStore";
+import { createPortal } from "react-dom";
 
 function ToastContainer({
   position = "top-right",
@@ -14,7 +15,7 @@ function ToastContainer({
     store.getSnapshot(containerId),
   );
 
-  return (
+  return createPortal(
     <div
       data-theme={theme}
       className={`toastora-toasts toastora-toasts--${position}`}
@@ -44,7 +45,8 @@ function ToastContainer({
             </Transition>
           );
         })}
-    </div>
+    </div>,
+    document.body,
   );
 }
 
