@@ -1,11 +1,11 @@
-.toasts,
-.toasts *,
-.toasts *::before,
-.toasts *::after {
+.toastora-toasts,
+.toastora-toasts *,
+.toastora-toasts *::before,
+.toastora-toasts *::after {
   box-sizing: border-box;
 }
 
-.toasts {
+.toastora-toasts {
   /*default theme*/
   --toast-default-bg: #ffffff;
   --toast-default-text-primary: #18181b;
@@ -31,30 +31,32 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 0;
+  margin: 0;
 }
 
-.toasts--top-right {
+.toastora-toasts--top-right {
   top: 10px;
   right: 10px;
   --slide-x: 100%;
 }
-.toasts--top-left {
+.toastora-toasts--top-left {
   top: 10px;
   left: 10px;
   --slide-x: -100%;
 }
-.toasts--bottom-right {
+.toastora-toasts--bottom-right {
   bottom: 10px;
   right: 10px;
   --slide-x: 100%;
 }
-.toasts--bottom-left {
+.toastora-toasts--bottom-left {
   bottom: 10px;
   left: 10px;
   --slide-x: -100%;
 }
 
-.toasts[data-theme="dark"] {
+.toastora-toasts[data-theme="dark"] {
   --toast-default-bg: #18181b;
   --toast-default-text-primary: #fafafa;
   --toast-default-text-secondary: #a1a1aa;
@@ -77,29 +79,25 @@
 }
 
 @media (max-width: 600px) {
-  .toasts {
+  .toastora-toasts {
     width: 100%;
     padding-left: 5px;
     padding-right: 5px;
   }
-  .toasts--top-right {
+  .toastora-toasts--top-right {
     top: 10px;
     right: 0px;
-    --slide-x: 100%;
   }
-  .toasts--top-left {
+  .toastora-toasts--top-left {
     top: 10px;
     left: 0px;
-    --slide-x: -100%;
   }
-  .toasts--bottom-right {
+  .toastora-toasts--bottom-right {
     bottom: 10px;
     right: 0px;
-    --slide-x: 100%;
   }
-  .toasts--bottom-left {
+  .toastora-toasts--bottom-left {
     bottom: 10px;
     left: 0px;
-    --slide-x: -100%;
   }
 }

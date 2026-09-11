@@ -10,7 +10,7 @@ function Transition({
   return (
     <div
       style={{ transitionDuration: `${duration}ms` }}
-      className={`transition-wrapper  ${isExiting ? "slide-out-animation" : ""}`}
+      className={`toastora-transition-wrapper  ${isExiting ? "toastora-slide-out-animation" : ""}`}
       onTransitionEnd={(event) => {
         if (event.target === event.currentTarget && isExiting)
           onTransitionEnd();

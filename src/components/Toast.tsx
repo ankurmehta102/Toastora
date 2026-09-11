@@ -17,20 +17,20 @@ const icons = {
 
 function Toast({ title, type, desc, duration, dismissToast }: ToastProps) {
   return (
-    <div className={`toast toast--${type}`}>
-      <div className="toast__icon-wrapper">{icons[type]}</div>
-      <div className="toast__content-wrapper">
-        <span className="toast__title">{title}</span>
-        {desc && <span className="toast__desc">{desc}</span>}
+    <div className={`toastora-toast toastora-toast--${type}`}>
+      <div className="toastora-toast__icon-wrapper">{icons[type]}</div>
+      <div className="toastora-toast__content-wrapper">
+        <span className="toastora-toast__title">{title}</span>
+        {desc && <span className="toastora-toast__desc">{desc}</span>}
       </div>
-      <div className="toast__dismiss-btn-wrapper">
-        <button onClick={dismissToast} className="toast__dismiss-btn">
+      <div className="toastora-toast__dismiss-btn-wrapper">
+        <button onClick={dismissToast} className="toastora-toast__dismiss-btn">
           <CrossIcon />
         </button>
       </div>
       {typeof duration === "number" && (
         <div
-          className="toast__progress-bar"
+          className="toastora-toast__progress-bar"
           style={{ animationDuration: `${duration}ms` }}
         />
       )}
