@@ -29,6 +29,7 @@ export default [
       typescript({
         tsconfig: "./tsconfig.json",
         exclude: ["**/*.test.tsx", "**/*.test.ts", "**/*.stories.ts"],
+        noEmitOnError: true,
       }),
       postcss({ extensions: [".css"], inject: true, extract: false }),
     ],
