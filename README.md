@@ -130,3 +130,7 @@ toast.success("Profile updated successfully!", {
   customComponent: CustomToast,
 });
 ```
+
+## Changelog
+
+See the [GitHub Releases](https://github.com/ankurmehta102/react-toastora/releases) for the latest changes and version history.
