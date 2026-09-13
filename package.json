@@ -10,7 +10,8 @@
   ],
   "scripts": {
     "build": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\" && rollup -c && node -e \"require('fs').rmSync('dist/esm/types', { recursive: true, force: true }); require('fs').rmSync('dist/cjs/types', { recursive: true, force: true })\"",
-    "dev": "rollup -c -w"
+    "dev": "rollup -c -w",
+    "lint": "eslint ."
   },
   "keywords": [
     "react",
@@ -22,17 +23,23 @@
   "author": "Ankur Mehta",
   "license": "MIT",
   "devDependencies": {
+    "@eslint/js": "^9.39.5",
     "@rollup/plugin-commonjs": "25.0.7",
     "@rollup/plugin-node-resolve": "15.2.3",
     "@rollup/plugin-typescript": "11.1.6",
     "@types/react": "18.2.55",
     "@types/react-dom": "^18.3.7",
+    "eslint": "^9.39.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.12.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "rollup-plugin-dts": "6.1.0",
     "rollup-plugin-postcss": "4.0.2",
     "tslib": "2.6.2",
-    "typescript": "5.3.3"
+    "typescript": "5.3.3",
+    "typescript-eslint": "^8.70.0"
   },
   "peerDependencies": {
     "react": ">=18"
